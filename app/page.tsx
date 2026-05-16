@@ -4,23 +4,35 @@ import { useMemo, useState } from "react";
 
 const products = [
   {
-    id: 1,
-    name: "Roborock S8",
-    brand: "Roborock",
-    category: "Saugroboter",
-    numericPrice: 599,
-    badge: "Testsieger",
-    rating: 4.7,
-    price: "ab 599€",
-    image:
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=1200&auto=format&fit=crop",
-    description:
-      "Premium-Saugroboter mit starker Saugleistung, intelligenter Navigation und Wischfunktion.",
-    features: ["Wischen", "App-Steuerung", "Tierhaare", "LiDAR Navigation"],
-    pros: ["Sehr gute Navigation", "Starke Saugleistung", "Gute App"],
-    cons: ["Relativ teuer", "Zubehör kann extra kosten"],
-    affiliate: "#",
-  },
+  id: 1,
+  name: "ECOVACS X12 PRO OMNI",
+  brand: "ECOVACS",
+  category: "Saugroboter",
+  badge: "Premium Empfehlung",
+  rating: 4.8,
+  numericPrice: 1049,
+  price: "ab 1.049€",
+  image:
+    "https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=1200&auto=format&fit=crop",
+  description:
+    "Premium-Saugroboter mit starker Saugleistung, moderner Wischfunktion und automatischer Reinigungsstation.",
+  features: [
+    "22000 Pa",
+    "OZMO Roller",
+    "Selbstreinigung",
+    "App-Steuerung",
+  ],
+  pros: [
+    "Sehr starke Saugleistung",
+    "Gute Wischfunktion",
+    "Premium-Station",
+  ],
+  cons: [
+    "Sehr hoher Preis",
+    "Große Station benötigt Platz",
+  ],
+  affiliate: "/produkte/ecovacs-x12-pro-omni",
+},
   {
     id: 2,
     name: "iRobot Roomba i7+",
