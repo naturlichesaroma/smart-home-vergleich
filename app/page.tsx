@@ -6,7 +6,9 @@ const products = [
   {
     id: 1,
     name: "Roborock S8",
+    brand: "Roborock",
     category: "Saugroboter",
+    numericPrice: 599,
     badge: "Testsieger",
     rating: 4.7,
     price: "ab 599€",
@@ -22,7 +24,9 @@ const products = [
   {
     id: 2,
     name: "iRobot Roomba i7+",
+    brand: "iRobot",
     category: "Saugroboter",
+    numericPrice: 499,
     badge: "Beliebt",
     rating: 4.5,
     price: "ab 499€",
@@ -38,7 +42,9 @@ const products = [
   {
     id: 3,
     name: "Arlo Pro 5",
+    brand: "Arlo",
     category: "Kamera",
+    numericPrice: 179,
     badge: "Premium",
     rating: 4.6,
     price: "ab 179€",
@@ -54,7 +60,9 @@ const products = [
   {
     id: 4,
     name: "Eufy Indoor Cam 2K",
+    brand: "Eufy",
     category: "Kamera",
+    numericPrice: 49,
     badge: "Preis-Leistung",
     rating: 4.4,
     price: "ab 49€",
@@ -76,6 +84,8 @@ function stars(rating: number) {
 export default function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Alle");
+  const [brand, setBrand] = useState("Alle");
+  const [maxPrice, setMaxPrice] = useState("Alle");
   const [compareA, setCompareA] = useState(1);
   const [compareB, setCompareB] = useState(3);
 
@@ -88,16 +98,61 @@ export default function Home() {
       const matchesCategory =
         category === "Alle" || product.category === category;
 
-      return matchesSearch && matchesCategory;
+     const matchesBrand =
+  brand === "Alle" || product.brand === brand;
+
+const matchesPrice =
+  maxPrice === "Alle" ||
+  product.numericPrice <= Number(maxPrice);
+
+return (
+  matchesSearch &&
+  matchesCategory &&
+  matchesBrand &&
+  matchesPrice
+);
     });
-  }, [search, category]);
+  }, [search, category, brand, maxPrice]);
 
   const productA = products.find((p) => p.id === compareA)!;
   const productB = products.find((p) => p.id === compareB)!;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-slate-100 text-gray-900">
-      <section className="relative overflow-hidden bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-900 text-white">
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b shadow-sm">
+  <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
+    <a href="#top" className="flex items-center gap-3">
+      <div className="h-10 w-10 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-center font-black">
+        SH
+      </div>
+
+      <div>
+        <div className="font-extrabold leading-none">
+          SmartHome Check
+        </div>
+
+        <div className="text-xs text-gray-500">
+          Vergleich & Kaufberatung
+        </div>
+      </div>
+    </a>
+
+    <div className="hidden md:flex gap-6 text-sm text-gray-600">
+      <a href="#produkte" className="hover:text-blue-600">
+        Produkte
+      </a>
+
+      <a href="#vergleich" className="hover:text-blue-600">
+        Vergleich
+      </a>
+
+      <a href="#affiliate" className="hover:text-blue-600">
+        Transparenz
+      </a>
+    </div>
+  </div>
+</nav>
+      <section id="top" className="relative overflow-hidden bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-900 text-white">
         <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
         <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl" />
 
@@ -139,6 +194,30 @@ export default function Home() {
               </button>
             ))}
           </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-2 max-w-xl">
+  <select
+    className="rounded-2xl bg-white px-4 py-3 text-gray-900"
+    value={brand}
+    onChange={(e) => setBrand(e.target.value)}
+  >
+    <option value="Alle">Alle Marken</option>
+    <option value="Roborock">Roborock</option>
+    <option value="iRobot">iRobot</option>
+    <option value="Arlo">Arlo</option>
+    <option value="Eufy">Eufy</option>
+  </select>
+
+  <select
+    className="rounded-2xl bg-white px-4 py-3 text-gray-900"
+    value={maxPrice}
+    onChange={(e) => setMaxPrice(e.target.value)}
+  >
+    <option value="Alle">Alle Preise</option>
+    <option value="100">bis 100€</option>
+    <option value="300">bis 300€</option>
+    <option value="600">bis 600€</option>
+  </select>
+</div>
         </div>
       </section>
 
