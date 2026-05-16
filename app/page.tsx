@@ -1,0 +1,417 @@
+"use client";
+
+import { useMemo, useState } from "react";
+
+const products = [
+  {
+    id: 1,
+    name: "Roborock S8",
+    category: "Saugroboter",
+    badge: "Testsieger",
+    rating: 4.7,
+    price: "ab 599€",
+    image:
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=1200&auto=format&fit=crop",
+    description:
+      "Premium-Saugroboter mit starker Saugleistung, intelligenter Navigation und Wischfunktion.",
+    features: ["Wischen", "App-Steuerung", "Tierhaare", "LiDAR Navigation"],
+    pros: ["Sehr gute Navigation", "Starke Saugleistung", "Gute App"],
+    cons: ["Relativ teuer", "Zubehör kann extra kosten"],
+    affiliate: "#",
+  },
+  {
+    id: 2,
+    name: "iRobot Roomba i7+",
+    category: "Saugroboter",
+    badge: "Beliebt",
+    rating: 4.5,
+    price: "ab 499€",
+    image:
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=1200&auto=format&fit=crop",
+    description:
+      "Bekannter Saugroboter mit automatischer Absaugstation und guter Alltagstauglichkeit.",
+    features: ["Absaugstation", "App-Steuerung", "Zeitpläne", "Teppich"],
+    pros: ["Automatische Entleerung", "Gute Marke", "Einfach zu bedienen"],
+    cons: ["Wischfunktion fehlt", "Etwas lauter"],
+    affiliate: "#",
+  },
+  {
+    id: 3,
+    name: "Arlo Pro 5",
+    category: "Kamera",
+    badge: "Premium",
+    rating: 4.6,
+    price: "ab 179€",
+    image:
+      "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1200&auto=format&fit=crop",
+    description:
+      "Hochwertige Sicherheitskamera für innen und außen mit starker Bildqualität.",
+    features: ["Outdoor", "Nachtsicht", "App", "Bewegungserkennung"],
+    pros: ["Sehr gute Bildqualität", "Für außen geeignet", "Moderne App"],
+    cons: ["Abo kann nötig sein", "Nicht die günstigste Kamera"],
+    affiliate: "#",
+  },
+  {
+    id: 4,
+    name: "Eufy Indoor Cam 2K",
+    category: "Kamera",
+    badge: "Preis-Leistung",
+    rating: 4.4,
+    price: "ab 49€",
+    image:
+      "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=1200&auto=format&fit=crop",
+    description:
+      "Günstige Innenkamera mit guter Auflösung und einfacher Bedienung.",
+    features: ["2K", "Indoor", "Nachtsicht", "Bewegungserkennung"],
+    pros: ["Günstig", "Gute Auflösung", "Ideal für Innenräume"],
+    cons: ["Nicht für draußen", "Weniger Premiumfunktionen"],
+    affiliate: "#",
+  },
+];
+
+function stars(rating: number) {
+  return "★".repeat(Math.round(rating)) + "☆".repeat(5 - Math.round(rating));
+}
+
+export default function Home() {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("Alle");
+  const [compareA, setCompareA] = useState(1);
+  const [compareB, setCompareB] = useState(3);
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) => {
+      const matchesSearch = product.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+      const matchesCategory =
+        category === "Alle" || product.category === category;
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [search, category]);
+
+  const productA = products.find((p) => p.id === compareA)!;
+  const productB = products.find((p) => p.id === compareB)!;
+
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-slate-100 text-gray-900">
+      <section className="relative overflow-hidden bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-900 text-white">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl" />
+
+        <div className="relative mx-auto max-w-6xl px-6 py-24">
+          <div className="mb-6 inline-flex rounded-full bg-white/10 px-4 py-2 text-sm backdrop-blur">
+            Unabhängiges Smart-Home Vergleichsportal
+          </div>
+
+          <h1 className="max-w-4xl text-5xl font-extrabold leading-tight tracking-tight md:text-6xl">
+            Saugroboter & Sicherheitskameras einfach vergleichen
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
+            Finde passende Smart-Home Produkte mit klaren Bewertungen,
+            ehrlichen Vorteilen und verständlichen Kaufempfehlungen.
+          </p>
+
+          <div className="mt-8 max-w-xl rounded-2xl bg-white/10 p-3 backdrop-blur">
+            <input
+              className="w-full bg-transparent px-3 py-2 text-white outline-none placeholder:text-white/70"
+              placeholder="Produkt suchen, z. B. Roborock oder Arlo..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            {["Alle", "Saugroboter", "Kamera"].map((item) => (
+              <button
+                key={item}
+                onClick={() => setCategory(item)}
+                className={`rounded-full border border-white/30 px-5 py-2 text-sm transition ${
+                  category === item
+                    ? "bg-white text-black"
+                    : "text-white hover:bg-white/10"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 mx-auto -mt-10 grid max-w-6xl gap-5 px-6 md:grid-cols-3">
+        <div className="rounded-3xl bg-white p-6 shadow-xl">
+          <h2 className="text-xl font-bold">Schnell vergleichen</h2>
+          <p className="mt-2 text-gray-600">
+            Produkte direkt gegenüberstellen und Unterschiede erkennen.
+          </p>
+        </div>
+
+        <div className="rounded-3xl bg-white p-6 shadow-xl">
+          <h2 className="text-xl font-bold">Bewertungen & FAQ</h2>
+          <p className="mt-2 text-gray-600">
+            Verständliche Einschätzungen statt komplizierter Technikbegriffe.
+          </p>
+        </div>
+
+        <div className="rounded-3xl bg-white p-6 shadow-xl">
+          <h2 className="text-xl font-bold">Affiliate vorbereitet</h2>
+          <p className="mt-2 text-gray-600">
+            Später musst du nur noch deine Amazon-Links einsetzen.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <div className="mb-8">
+          <p className="font-semibold text-blue-700">Top Empfehlungen</p>
+          <h2 className="text-4xl font-extrabold">Beliebte Produkte</h2>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {filteredProducts.map((product) => (
+            <article
+              key={product.id}
+              className="overflow-hidden rounded-[32px] bg-white shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
+            >
+              <div className="relative">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-72 w-full object-cover"
+                />
+
+                <div className="absolute left-5 top-5 rounded-full bg-white/90 px-4 py-2 text-sm font-bold backdrop-blur">
+                  {product.badge}
+                </div>
+              </div>
+
+              <div className="p-8">
+                <div className="text-sm font-semibold text-blue-700">
+                  {product.category}
+                </div>
+
+                <h3 className="mt-1 text-3xl font-bold">{product.name}</h3>
+
+                <div className="mt-3 text-yellow-500">
+                  {stars(product.rating)}
+                  <span className="ml-2 text-sm text-gray-500">
+                    {product.rating}/5
+                  </span>
+                </div>
+
+                <p className="mt-4 leading-relaxed text-gray-600">
+                  {product.description}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {product.features.map((feature) => (
+                    <span
+                      key={feature}
+                      className="rounded-full bg-slate-100 px-3 py-1 text-sm"
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-8 flex items-center justify-between gap-4">
+                  <div>
+                    <div className="text-sm text-gray-500">Preisbereich</div>
+                    <div className="text-2xl font-bold">{product.price}</div>
+                  </div>
+
+                  <a
+                    href={product.affiliate}
+                    className="rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white transition hover:scale-105"
+                  >
+                    Preis prüfen
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <div className="rounded-[32px] bg-white p-8 shadow-2xl">
+          <p className="font-semibold text-blue-700">Produktvergleich</p>
+          <h2 className="mt-2 text-4xl font-extrabold">
+            Produkt A vs Produkt B
+          </h2>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <select
+              className="rounded-2xl border p-4"
+              value={compareA}
+              onChange={(e) => setCompareA(Number(e.target.value))}
+            >
+              {products.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+
+            <select
+              className="rounded-2xl border p-4"
+              value={compareB}
+              onChange={(e) => setCompareB(Number(e.target.value))}
+            >
+              {products.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {[productA, productB].map((product) => (
+              <div key={product.id} className="rounded-3xl bg-slate-50 p-6">
+                <h3 className="text-2xl font-bold">{product.name}</h3>
+                <div className="mt-2 text-yellow-500">
+                  {stars(product.rating)}
+                </div>
+                <p className="mt-4 text-gray-600">{product.description}</p>
+                <div className="mt-4 font-bold">{product.price}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <div className="rounded-[32px] bg-white p-8 shadow-2xl">
+          <p className="font-semibold text-blue-700">SEO Produktseite</p>
+          <h2 className="mt-2 text-4xl font-extrabold">
+            Roborock S8 Test & Bewertung
+          </h2>
+
+          <div className="mt-8 grid gap-8 lg:grid-cols-2">
+            <div>
+              <img
+                src={products[0].image}
+                alt="Roborock S8 Produktbild"
+                className="h-96 w-full rounded-3xl object-cover shadow-lg"
+              />
+            </div>
+
+            <div>
+              <div className="inline-block rounded-full bg-blue-100 px-4 py-2 text-sm font-bold text-blue-700">
+                Testsieger Empfehlung
+              </div>
+
+              <p className="mt-5 text-lg leading-relaxed text-gray-600">
+                Der Roborock S8 ist eine starke Wahl für Nutzer, die einen
+                leistungsstarken Saugroboter mit Wischfunktion, App-Steuerung
+                und intelligenter Navigation suchen.
+              </p>
+
+              <a
+                href="#"
+                className="mt-8 inline-block rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-4 font-semibold text-white shadow-lg"
+              >
+                Preis bei Amazon prüfen
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl border border-green-100 bg-green-50 p-6">
+              <h3 className="text-2xl font-bold text-green-700">Vorteile</h3>
+              <ul className="mt-4 space-y-2 text-gray-700">
+                <li>✔ Sehr gute Navigation</li>
+                <li>✔ Starke Saugleistung</li>
+                <li>✔ Für Tierhaare geeignet</li>
+                <li>✔ Moderne App-Steuerung</li>
+              </ul>
+            </div>
+
+            <div className="rounded-3xl border border-red-100 bg-red-50 p-6">
+              <h3 className="text-2xl font-bold text-red-600">Nachteile</h3>
+              <ul className="mt-4 space-y-2 text-gray-700">
+                <li>✖ Höherer Preis</li>
+                <li>✖ Zubehör kann extra kosten</li>
+                <li>✖ Für kleine Wohnungen eventuell überdimensioniert</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-10 rounded-3xl bg-slate-50 p-6">
+            <h3 className="text-2xl font-bold">Häufige Fragen</h3>
+
+            <div className="mt-6 space-y-5">
+              <div>
+                <h4 className="font-bold">
+                  Ist der Roborock S8 für Tierhaare geeignet?
+                </h4>
+                <p className="mt-1 text-gray-600">
+                  Ja, durch die starke Saugleistung eignet er sich gut für
+                  Haushalte mit Haustieren.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-bold">Hat der Roborock S8 eine Wischfunktion?</h4>
+                <p className="mt-1 text-gray-600">
+                  Ja, das Modell kombiniert Saugen und Wischen.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-bold">Lohnt sich der Preis?</h4>
+                <p className="mt-1 text-gray-600">
+                  Für Nutzer, die Komfort, starke Leistung und smarte Funktionen
+                  suchen, kann sich der Preis lohnen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+  <div className="rounded-[32px] bg-white p-8 shadow-xl">
+    <h2 className="text-3xl font-extrabold">
+      Transparenz & Amazon Partnerprogramm
+    </h2>
+
+    <p className="mt-4 leading-relaxed text-gray-600">
+      Auf dieser Website findest du Vergleiche, Bewertungen und Empfehlungen
+      zu Saugrobotern und Sicherheitskameras. Ziel ist es, Besuchern eine
+      verständliche Orientierung vor dem Kauf zu geben.
+    </p>
+
+    <p className="mt-4 leading-relaxed text-gray-600 font-semibold">
+      Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.
+    </p>
+
+    <p className="mt-4 leading-relaxed text-gray-600">
+      Wenn du über einen Affiliate-Link ein Produkt kaufst, kann diese Website
+      eine Provision erhalten. Für dich entstehen dadurch keine zusätzlichen Kosten.
+    </p>
+  </div>
+</section>
+
+      <footer className="px-6 py-10 text-center text-sm text-gray-500">
+        <div className="mb-4 flex justify-center gap-6">
+          <a href="#" className="hover:underline">
+            Impressum
+          </a>
+          <a href="#" className="hover:underline">
+            Datenschutz
+          </a>
+          <a href="#" className="hover:underline">
+            Kontakt
+          </a>
+        </div>
+        © 2026 Smart Home Vergleichsportal
+      </footer>
+    </main>
+  );
+}
