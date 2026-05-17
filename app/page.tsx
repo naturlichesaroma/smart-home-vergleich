@@ -11,9 +11,8 @@ const products = [
   badge: "Premium Empfehlung",
   rating: 4.8,
   numericPrice: 1049,
-  price: "ab 1.049€",
-  image:
-    "https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=1200&auto=format&fit=crop",
+  price: "ab 1.199€",
+  image: "/ecovacs-x12.webp",
   description:
     "Premium-Saugroboter mit starker Saugleistung, moderner Wischfunktion und automatischer Reinigungsstation.",
   features: [
@@ -319,7 +318,7 @@ return (
                     href={product.affiliate}
                     className="rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white transition hover:scale-105"
                   >
-                    Preis prüfen
+                    Details ansehen
                   </a>
                 </div>
               </div>
