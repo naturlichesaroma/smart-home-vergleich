@@ -5,6 +5,8 @@ const images = [
   "/ecovacs-x12.webp",
   "/ecovacs-x12-2.webp",
   "/ecovacs-x12-3.webp",
+  "/ecovacs-x12-4.webp",
+  "/ecovacs-x12-5.webp",
 ];
 export default function EcovacsPage() {
   const [currentImage, setCurrentImage] = useState(0);
