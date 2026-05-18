@@ -333,21 +333,31 @@ return (
 
       <section className="mx-auto max-w-6xl px-6 pb-16">
         <div className="rounded-[32px] bg-white p-8 shadow-2xl">
-          <p className="font-semibold text-blue-700">Produktvergleich</p>
-          <div className="mb-6 flex gap-3">
-  {["Saugroboter", "Kamera"].map((type) => (
-    <button
-      key={type}
-      onClick={() => setCompareType(type)}
-      className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
-        compareType === type
-          ? "bg-blue-600 text-white"
-          : "bg-white text-gray-700 hover:bg-gray-100"
-      }`}
-    >
-      {type}
-    </button>
-  ))}
+          <div className="mb-6 flex items-center justify-between gap-4">
+  <p className="font-semibold text-blue-700">Produktvergleich</p>
+
+  <div className="flex gap-3">
+    {["Saugroboter", "Kamera"].map((type) => (
+      <button
+        key={type}
+        onClick={() => {
+          setCompareType(type);
+          const first = products.find((p) => p.category === type);
+          const second = products.filter((p) => p.category === type)[1] || first;
+
+          if (first) setCompareA(first.id);
+          if (second) setCompareB(second.id);
+        }}
+        className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
+          compareType === type
+            ? "bg-blue-600 text-white"
+            : "bg-white text-gray-700 hover:bg-gray-100"
+        }`}
+      >
+        {type === "Kamera" ? "Kameras" : "Saugroboter"}
+      </button>
+    ))}
+  </div>
 </div>
           <h2 className="mt-2 text-4xl font-extrabold">
             Produkt A vs Produkt B
@@ -359,7 +369,7 @@ return (
               value={compareA}
               onChange={(e) => setCompareA(Number(e.target.value))}
             >
-              {products.map((p) => (
+              {compareProducts.map((p) => (
                 <option key={p.id} value={p.id}>
                   {p.name}
                 </option>
@@ -371,7 +381,7 @@ return (
               value={compareB}
               onChange={(e) => setCompareB(Number(e.target.value))}
             >
-              {products.map((p) => (
+              {compareProducts.map((p) => (
                 <option key={p.id} value={p.id}>
                   {p.name}
                 </option>
