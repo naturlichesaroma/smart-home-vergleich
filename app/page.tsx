@@ -99,6 +99,7 @@ export default function Home() {
   const [maxPrice, setMaxPrice] = useState("Alle");
   const [compareA, setCompareA] = useState(1);
   const [compareB, setCompareB] = useState(3);
+  const [compareType, setCompareType] = useState("Saugroboter");
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -124,6 +125,9 @@ return (
 );
     });
   }, [search, category, brand, maxPrice]);
+  const compareProducts = products.filter(
+  (p) => p.category === compareType
+);
 
   const productA = products.find((p) => p.id === compareA)!;
   const productB = products.find((p) => p.id === compareB)!;
@@ -330,6 +334,21 @@ return (
       <section className="mx-auto max-w-6xl px-6 pb-16">
         <div className="rounded-[32px] bg-white p-8 shadow-2xl">
           <p className="font-semibold text-blue-700">Produktvergleich</p>
+          <div className="mb-6 flex gap-3">
+  {["Saugroboter", "Kamera"].map((type) => (
+    <button
+      key={type}
+      onClick={() => setCompareType(type)}
+      className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
+        compareType === type
+          ? "bg-blue-600 text-white"
+          : "bg-white text-gray-700 hover:bg-gray-100"
+      }`}
+    >
+      {type}
+    </button>
+  ))}
+</div>
           <h2 className="mt-2 text-4xl font-extrabold">
             Produkt A vs Produkt B
           </h2>
