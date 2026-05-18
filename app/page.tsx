@@ -398,7 +398,7 @@ return (
         <div className="rounded-[32px] bg-white p-8 shadow-2xl">
           <p className="font-semibold text-blue-700">SEO Produktseite</p>
           <h2 className="mt-2 text-4xl font-extrabold">
-            Roborock S8 Test & Bewertung
+            ECOVACS X12 PRO OMNI Test & Bewertung
           </h2>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
@@ -416,16 +416,14 @@ return (
               </div>
 
               <p className="mt-5 text-lg leading-relaxed text-gray-600">
-                Der Roborock S8 ist eine starke Wahl für Nutzer, die einen
-                leistungsstarken Saugroboter mit Wischfunktion, App-Steuerung
-                und intelligenter Navigation suchen.
+                Der ECOVACS X12 PRO OMNI ist ein Premium-Saugroboter mit FocusJet-Fleckenvorlösung, OZMO Roller 3.0, 22.000 Pa Saugleistung, TruEdge 3.0 Kantenreinigung und automatischer Reinigungsstation.
               </p>
 
               <a
-                href="#"
+                href="/produkte/ecovacs-x12-pro-omni"
                 className="mt-8 inline-block rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-4 font-semibold text-white shadow-lg"
               >
-                Preis bei Amazon prüfen
+                Details ansehen
               </a>
             </div>
           </div>
@@ -434,19 +432,19 @@ return (
             <div className="rounded-3xl border border-green-100 bg-green-50 p-6">
               <h3 className="text-2xl font-bold text-green-700">Vorteile</h3>
               <ul className="mt-4 space-y-2 text-gray-700">
-                <li>✔ Sehr gute Navigation</li>
-                <li>✔ Starke Saugleistung</li>
-                <li>✔ Für Tierhaare geeignet</li>
-                <li>✔ Moderne App-Steuerung</li>
+                <li>✔ Sehr starke Saugleistung mit bis zu 22.000 Pa</li>
+              <li>✔ OZMO Roller 3.0 Wischsystem</li>
+              <li>✔ FocusJet-Technologie zur Fleckenvorlösung</li>
+              <li>✔ Automatische Reinigungsstation</li>
               </ul>
             </div>
 
             <div className="rounded-3xl border border-red-100 bg-red-50 p-6">
               <h3 className="text-2xl font-bold text-red-600">Nachteile</h3>
               <ul className="mt-4 space-y-2 text-gray-700">
-                <li>✖ Höherer Preis</li>
-                <li>✖ Zubehör kann extra kosten</li>
-                <li>✖ Für kleine Wohnungen eventuell überdimensioniert</li>
+                <li>✖ Hoher Preis im Premium-Segment</li>
+                <li>✖ Große Station benötigt Platz</li>
+              <  li>✖ Für kleine Wohnungen eventuell überdimensioniert</li>
               </ul>
             </div>
           </div>
@@ -457,7 +455,7 @@ return (
             <div className="mt-6 space-y-5">
               <div>
                 <h4 className="font-bold">
-                  Ist der Roborock S8 für Tierhaare geeignet?
+                  Ist der ECOVACS X12 PRO OMNI für Tierhaare geeignet?
                 </h4>
                 <p className="mt-1 text-gray-600">
                   Ja, durch die starke Saugleistung eignet er sich gut für
@@ -466,7 +464,7 @@ return (
               </div>
 
               <div>
-                <h4 className="font-bold">Hat der Roborock S8 eine Wischfunktion?</h4>
+                <h4 className="font-bold">Hat der ECOVACS X12 PRO OMNI eine Wischfunktion?</h4>
                 <p className="mt-1 text-gray-600">
                   Ja, das Modell kombiniert Saugen und Wischen.
                 </p>
