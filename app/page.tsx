@@ -431,7 +431,7 @@ return (
 
               <a
                 href="/produkte/ecovacs-x12-pro-omni"
-                className="mt-8 inline-block rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-4 font-semibold text-white shadow-lg"
+                className="mt-8 inline-block rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-4 font-semibold text-white shadow-lg shadow-blue-500/30 transition duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40"
               >
                 Details ansehen
               </a>
