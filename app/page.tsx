@@ -68,24 +68,35 @@ const products = [
     cons: ["Abo kann nötig sein", "Nicht die günstigste Kamera"],
     affiliate: "#",
   },
-  {
-    id: 4,
-    name: "Eufy Indoor Cam 2K",
-    brand: "Eufy",
-    category: "Kamera",
-    numericPrice: 49,
-    badge: "Preis-Leistung",
-    rating: 4.4,
-    price: "ab 49€",
-    image:
-      "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=1200&auto=format&fit=crop",
-    description:
-      "Günstige Innenkamera mit guter Auflösung und einfacher Bedienung.",
-    features: ["2K", "Indoor", "Nachtsicht", "Bewegungserkennung"],
-    pros: ["Günstig", "Gute Auflösung", "Ideal für Innenräume"],
-    cons: ["Nicht für draußen", "Weniger Premiumfunktionen"],
-    affiliate: "#",
-  },
+    {
+  id: 4,
+  name: "Roborock QV 35A Set",
+  brand: "Roborock",
+  category: "Saugroboter",
+  numericPrice: 349,
+  badge: "Preis-Leistung",
+  rating: 4.5,
+  price: "ab 599€",
+  image: "/roborock-qv35a.webp",
+  description:
+    "Preis-Leistungs-Saugroboter mit 8.000 Pa Saugleistung, LiDAR-Navigation und automatischer Reinigungsstation.",
+  features: [
+    "8.000 Pa",
+    "LiDAR",
+    "Reactive Tech",
+    "All-in-One Dock",
+  ],
+  pros: [
+    "Sehr gutes Preis-Leistungs-Verhältnis",
+    "Automatische Reinigungsstation",
+    "Starke Navigation",
+  ],
+  cons: [
+    "Große Dockingstation",
+    "Weniger Premiumfunktionen",
+  ],
+  affiliate: "/produkte/roborock-qv35a",
+},
 ];
 
 function stars(rating: number) {
