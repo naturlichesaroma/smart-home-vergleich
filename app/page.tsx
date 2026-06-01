@@ -50,24 +50,37 @@ const products = [
     cons: ["Wischfunktion fehlt", "Etwas lauter"],
     affiliate: "#",
   },
-  {
-    id: 3,
-    name: "Arlo Pro 5",
-    brand: "Arlo",
-    category: "Kamera",
-    numericPrice: 179,
-    badge: "Premium",
-    rating: 4.6,
-    price: "ab 179€",
-    image:
-      "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1200&auto=format&fit=crop",
-    description:
-      "Hochwertige Sicherheitskamera für innen und außen mit starker Bildqualität.",
-    features: ["Outdoor", "Nachtsicht", "App", "Bewegungserkennung"],
-    pros: ["Sehr gute Bildqualität", "Für außen geeignet", "Moderne App"],
-    cons: ["Abo kann nötig sein", "Nicht die günstigste Kamera"],
-    affiliate: "#",
-  },
+ {
+  id: 3,
+  name: "Arlo Pro 5",
+  brand: "Arlo",
+  category: "Kamera",
+  numericPrice: 185,
+  badge: "Premium",
+  rating: 3.8,
+  price: "ab 185€",
+  image: "/arlo-pro5.webp",
+  description:
+    "Kabellose 2K-HDR Sicherheitskamera mit Farbnachtsicht, 160° Blickwinkel und smarter Bewegungserkennung.",
+  features: [
+    "2K HDR",
+    "Farbnachtsicht",
+    "160° Blickwinkel",
+    "IP65"
+  ],
+  pros: [
+    "Sehr einfache Installation",
+    "2K HDR Bildqualität",
+    "Farbnachtsicht",
+    "Für Innen & Außen geeignet"
+  ],
+  cons: [
+    "Cloud-Abo für viele Funktionen",
+    "Preis relativ hoch",
+    "Lokale Speicherung eingeschränkt"
+  ],
+  affiliate: "/produkte/arlo-pro-5",
+},
     {
   id: 4,
   name: "Roborock QV 35A Set",
