@@ -243,7 +243,7 @@ return (
     <option value="Roborock">Roborock</option>
     <option value="iRobot">iRobot</option>
     <option value="Arlo">Arlo</option>
-    <option value="Eufy">Eufy</option>
+    <option value="ECOVACS">ECOVACS</option>
   </select>
 
   <select
@@ -283,7 +283,7 @@ return (
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      <section id="produkte" className="mx-auto max-w-6xl px-6 py-16">
         <div className="mb-8">
           <p className="font-semibold text-blue-700">Top Empfehlungen</p>
           <h2 className="text-4xl font-extrabold">Beliebte Produkte</h2>
@@ -355,7 +355,7 @@ return (
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-16">
+      <section id="vergleich" className="mx-auto max-w-6xl px-6 pb-16">
         <div className="rounded-[32px] bg-white p-8 shadow-2xl">
           <div className="mb-6 flex items-center justify-between gap-4">
   <p className="font-semibold text-blue-700">Produktvergleich</p>

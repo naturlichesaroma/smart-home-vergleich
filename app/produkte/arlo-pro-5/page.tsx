@@ -8,6 +8,7 @@ const images = [
   "/arlo-pro5-3.webp",
   "/arlo-pro5-4.webp",
   "/arlo-pro5-5.webp",
+  "/arlo-pro5-6.webp",
 ];
 
 export default function ArloPro5Page() {
